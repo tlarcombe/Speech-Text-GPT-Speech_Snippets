@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Define TTS Model here
+TTS_MODEL=/usr/local/bin/sh/en_GB-semaine-medium.onnx
+
+echo "Text to say here." | piper-tts --model $TTS_MODEL --output-raw | aplay -r 22050 -f S16_LE -t raw -

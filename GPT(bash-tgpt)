@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## Use the Speech2text script within this repo
+TTS_MODEL=/usr/local/bin/sh/en_GB-semaine-medium.onnx
+
+echo -e "Welcome to the voice chat for tgpt. You can quit with \033[36m'exit' \033[0mor \033[36m'q'\033[0m."
+echo -e " "
+echo -e "\033[36mVoice control enabled\033[0m"
+
+read -p "Ask your question: " question
+
+echo $question | tgpt -q -i "Prompt expansion should be here, for example, Answer in less than 100 words" - | piper-tts --model $TTS_MODEL --output-raw | aplay -r 22050 -f S16_LE -t raw -
